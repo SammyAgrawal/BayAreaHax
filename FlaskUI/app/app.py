@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import json # py library
 
-file = open('byName.json', 'r')
+file = open('/Users/Julian/Documents/GitHub/BayAreaHax/FlaskUI/app/repData.json', 'r')
 dic = json.load(file)
 def getTop(n):
     result = []
@@ -30,7 +30,11 @@ def choose_campaign():
 
 @app.route('/contacts/')
 def contacts():
-	return render_template('contacts.html')
+	return render_template('contacts.html', data=getTop(159))
+
+@app.route('/login/')
+def login():
+	return render_template('login.html')
 
 
 if __name__ == "__main__":

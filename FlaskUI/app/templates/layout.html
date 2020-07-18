@@ -8,7 +8,7 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
 	</head>
 
-	{% block script%} {% endblock %}
+	{% block style %} {% endblock %}
 
 	<body>
 		<!-- Header -->
@@ -17,7 +17,7 @@
 					<a href="#menu"><span>Menu</span></a>
 				</nav>
 				<nav class="right">
-					<a href="#" class="button alt">Log in</a>
+					<a href="{{ url_for('login') }}" class="button alt">Log in</a>
 				</nav>
 			</header>
 

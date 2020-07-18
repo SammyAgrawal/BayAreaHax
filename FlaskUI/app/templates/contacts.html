@@ -34,23 +34,30 @@
   color: white;
 }
 </style>
+{% endblock %}
+
+{% block page_content %}
 <body>
 
 <table id="customers">
   <tr>
     <th>Name</th>
+    <th>Party</th>
     <th>Email</th>
     <th>District</th>
-      <th>URL</th>
-      <th>Score</th>
+    <th>URL</th>
+    <th>Score</th>
   </tr>
-  <tr>
-    <td>Rep.</td>
-    <td>fj</td>
-    <td>Paris</td>
-      <td>Paris</td>
-      <td>97</td>
-  </tr>
+  {% for senator in data %}
+    <tr>
+      <td> {{senator["Name"]}}</td>
+      <td> {{senator["Party"]}}</td>
+      <td> {{senator["Email Address"]}} </td>
+      <td> {{senator["District"]}}</td>
+      <td> {{senator["Link"]}}</td>
+      <td> {{senator["Score"]}}</td>
+    </tr>
+  {% endfor %}
 </table>
 
 {% endblock %}
