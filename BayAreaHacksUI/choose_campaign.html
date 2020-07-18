@@ -6,7 +6,6 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 	</head>
-	<body class="subpage">
 
 		<!-- Header -->
 			<header id="header">
@@ -22,7 +21,9 @@
 			<nav id="menu">
 				<ul class="links">
 					<li><a href="index.html">Home</a></li>
-					<li><a href="choose_campaign.html">Browse Campaigns</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+					<li><a href="choose_campaign.html">Start a New Campaign</a></li>
+                    <li><a href="step2.html">Contacts</a></li>
 				</ul>
 				<ul class="actions vertical">
 					<li><a href="#" class="button fit">Login</a></li>
@@ -33,8 +34,8 @@
 			<section id="main" class="wrapper">
 				<div class="inner">
 					<header class="align-center">
-						<h1>Choose Your Campaign</h1>
-						<p>Pick one of our supported campaigns!</p>
+						<h1>Start a New Campaign</h1>
+						<p>Become an activist today!</p>
 					</header>
 <body>
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
@@ -42,23 +43,12 @@
             <div class="card card-4">
                 <div class="card-body">
                     <form method="POST">
-                        <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Choose a Campaign</label>
-                                    <div class="p-t-10">
-                                        <label class="radio-container m-r-45">WSAYO
-                                            <input type="radio" checked="checked" name="gender">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">BLM
-                                            <input type="radio" name="gender">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
+                                    <label class="label">Campaign Name </label>
+                                    <input class="input--style-4" type="text" name="phone">
                                 </div>
                             </div>
-                        </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">State That You are Located In </label>
@@ -93,7 +83,7 @@
                                 </div>
                         </div>
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit"><a href="step2.html">Submit</a></button>
+                            <button class="btn btn--radius-2 btn--blue" type="submit"><a href="dashboard.html">Submit</a></button>
                         </div>
                     </form>
                 </div>
