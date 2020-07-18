@@ -1,60 +1,60 @@
 (function($) {
 
-	skel.breakpoints({
-		xlarge:	'(max-width: 1680px)',
-		large:	'(max-width: 1280px)',
-		medium:	'(max-width: 980px)',
-		small:	'(max-width: 736px)',
-		xsmall:	'(max-width: 480px)'
-	});
+  skel.breakpoints({
+    xlarge: '(max-width: 1680px)',
+    large:  '(max-width: 1280px)',
+    medium: '(max-width: 980px)',
+    small:  '(max-width: 736px)',
+    xsmall: '(max-width: 480px)'
+  });
 
-	$(function() {
+  $(function() {
 
-		var	$window = $(window),
-			$body = $('body'),
-			$header = $('#header');
+    var $window = $(window),
+      $body = $('body'),
+      $header = $('#header');
 
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
+    // Disable animations/transitions until the page has loaded.
+      $body.addClass('is-loading');
 
-			$window.on('load', function() {
-				window.setTimeout(function() {
-					$body.removeClass('is-loading');
-				}, 100);
-			});
+      $window.on('load', function() {
+        window.setTimeout(function() {
+          $body.removeClass('is-loading');
+        }, 100);
+      });
 
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
+    // Fix: Placeholder polyfill.
+      $('form').placeholder();
 
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
+    // Prioritize "important" elements on medium.
+      skel.on('+medium -medium', function() {
+        $.prioritize(
+          '.important\\28 medium\\29',
+          skel.breakpoint('medium').active
+        );
+      });
 
-		// Scrolly.
-			$('.scrolly').scrolly({
-				offset: function() {
-					return $header.height();
-				}
-			});
+    // Scrolly.
+      $('.scrolly').scrolly({
+        offset: function() {
+          return $header.height();
+        }
+      });
 
-		// Menu.
-			$('#menu')
-				.append('<a href="#menu" class="close"></a>')
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'right'
-				});
+    // Menu.
+      $('#menu')
+        .append('<a href="#menu" class="close"></a>')
+        .appendTo($body)
+        .panel({
+          delay: 500,
+          hideOnClick: true,
+          hideOnSwipe: true,
+          resetScroll: true,
+          resetForms: true,
+          side: 'right'
+        });
 
-	});
+  });
 
 })(jQuery);
 
@@ -323,3 +323,113 @@ $(document).ready(function() {
   var quiz_container = $('#quiz');
   quiz.render(quiz_container);
 });
+
+
+(function ($) {
+  "use strict";
+  $('.column100').on('mouseover',function(){
+    var table1 = $(this).parent().parent().parent();
+    var table2 = $(this).parent().parent();
+    var verTable = $(table1).data('vertable')+"";
+    var column = $(this).data('column') + ""; 
+
+    $(table2).find("."+column).addClass('hov-column-'+ verTable);
+    $(table1).find(".row100.head ."+column).addClass('hov-column-head-'+ verTable);
+  });
+
+  $('.column100').on('mouseout',function(){
+    var table1 = $(this).parent().parent().parent();
+    var table2 = $(this).parent().parent();
+    var verTable = $(table1).data('vertable')+"";
+    var column = $(this).data('column') + ""; 
+
+    $(table2).find("."+column).removeClass('hov-column-'+ verTable);
+    $(table1).find(".row100.head ."+column).removeClass('hov-column-head-'+ verTable);
+  });
+
+    var app = angular.module('myApp', ['ui.bootstrap']);
+app.controller('myCtrl', function($scope) {
+  $scope.customers = [{
+    "Name": "Alfreds Futterkiste",
+    "City": "Berlin",
+    "Country": "Germany"
+  }, {
+    "Name": "Ana Trujillo Emparedados y helados",
+    "City": "México D.F.",
+    "Country": "Mexico"
+  }, {
+    "Name": "Antonio Moreno Taquería",
+    "City": "México D.F.",
+    "Country": "Mexico"
+  }, {
+    "Name": "Around the Horn",
+    "City": "London",
+    "Country": "UK"
+  }, {
+    "Name": "B's Beverages",
+    "City": "London",
+    "Country": "UK"
+  }, {
+    "Name": "Berglunds snabbköp",
+    "City": "Luleå",
+    "Country": "Sweden"
+  }, {
+    "Name": "Blauer See Delikatessen",
+    "City": "Mannheim",
+    "Country": "Germany"
+  }, {
+    "Name": "Blondel père et fils",
+    "City": "Strasbourg",
+    "Country": "France"
+  }, {
+    "Name": "Bólido Comidas preparadas",
+    "City": "Madrid",
+    "Country": "Spain"
+  }, {
+    "Name": "Bon app'",
+    "City": "Marseille",
+    "Country": "France"
+  }, {
+    "Name": "Bottom-Dollar Marketse",
+    "City": "Tsawassen",
+    "Country": "Canada"
+  }, {
+    "Name": "Cactus Comidas para llevar",
+    "City": "Buenos Aires",
+    "Country": "Argentina"
+  }, {
+    "Name": "Centro comercial Moctezuma",
+    "City": "México D.F.",
+    "Country": "Mexico"
+  }, {
+    "Name": "Chop-suey Chinese",
+    "City": "Bern",
+    "Country": "Switzerland"
+  }, {
+    "Name": "Comércio Mineiro",
+    "City": "São Paulo",
+    "Country": "Brazil"
+  }],
+  $scope.people=[],
+  $scope.currentPage = 1,
+  $scope.numPerPage = 5,
+  $scope.maxSize = 5;
+  
+  
+  
+  $scope.numPages = function () {
+    return Math.ceil($scope.customers.length / $scope.numPerPage);
+  };
+  
+  $scope.$watch('currentPage + numPerPage', function() {
+    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+    , end = begin + $scope.numPerPage;
+    
+    $scope.people = $scope.customers.slice(begin, end);
+  });
+  
+  
+});
+    
+
+})(jQuery);
